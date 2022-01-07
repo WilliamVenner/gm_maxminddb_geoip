@@ -1,12 +1,10 @@
 #![feature(c_unwind)]
 
-#[macro_use]
-extern crate gmod;
-#[macro_use]
-extern crate thiserror;
+#[macro_use] extern crate gmod;
+#[macro_use] extern crate thiserror;
 
-use maxminddb::MaxMindDBError;
 use std::{borrow::Cow, cell::RefCell, net::IpAddr, path::PathBuf, str::FromStr};
+use maxminddb::MaxMindDBError;
 
 mod serialize;
 use serialize::PushToLua;
