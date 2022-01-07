@@ -18,7 +18,7 @@ Then, put the downloaded `dll` file in `garrysmod/lua/bin`, if that folder doesn
 
 ## Downloading the MaxMindDB GeoIP database
 
-[Click here to download the MaxMindDB GeoIP database](https://www.maxmind.com/en/geoip2-services-and-databases)
+[Click here to download the MaxMindDB GeoIP database](https://www.maxmind.com/en/accounts/current/geoip/downloads)
 
 You'll need to create an account unfortunately. Alternatively, you could always [download a sketchy one from GitHub](https://github.com/search?l=&q=extension%3Ammdb&type=code) if you are lazy.
 
@@ -34,7 +34,7 @@ If you only need country information, download "GeoLite2 Country" (NOT the CSV o
 
 # Developers
 
-All data available in the [`maxminddb` crate documentation](https://docs.rs/maxminddb/0.21.0/maxminddb) is serialized and available.
+All data available in the [`maxminddb` crate documentation](https://docs.rs/maxminddb/0.21.0/maxminddb/geoip2) is serialized and available.
 
 If you want to automate the downloading of the database in some way, the module will also accept a MaxMindDB stored in `garrysmod/data/maxminddb.dat` which can be written to using [`file.Write`](https://wiki.facepunch.com/gmod/file.Write)
 
