@@ -49,6 +49,9 @@ Not all servers will have the full databases installed, and the free database co
 ```lua
 require("maxminddb_geoip")
 
+-- Prints the version of the module
+print(maxminddb.VERSION)
+
 -- This will reread the database from the disk, useful if you've just written to garrysmod/data/maxminddb.dat
 -- You don't need to call this function after require()ing the module, it will load automatically
 -- maxminddb.refresh() -> (success: bool, error: [string | nil])
@@ -83,6 +86,8 @@ end
 ```
 
 ```lua
+-- Database used for example: GeoLite2-Country
+
 continent:
     code        =       "OC"
     geoname_id  =       6255151

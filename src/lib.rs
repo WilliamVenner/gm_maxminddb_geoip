@@ -194,6 +194,9 @@ macro_rules! geoip_records {
 			lua_stack_guard!(lua => {
 				lua.new_table();
 
+				lua.push_string(env!("CARGO_PKG_VERSION"));
+				lua.set_field(-2, lua_string!("VERSION"));
+
 				lua.push_function(refresh);
 				lua.set_field(-2, lua_string!("refresh"));
 
