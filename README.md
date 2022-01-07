@@ -6,23 +6,31 @@ In other words, IP address goes in, GeoIP data comes out.
 
 # Installation
 
-1. Run this in your server's console and it will tell you which module you need to download from the [releases page](https://github.com/WilliamVenner/gm_maxminddb_geoip/releases)
+## Downloading the module
+
+First, run this in your server's console and it will tell you which module you need to download from the [releases page](https://github.com/WilliamVenner/gm_maxminddb_geoip/releases)
 
 ```lua
 lua_run print("gmsv_maxminddb_geoip_" .. ((system.IsLinux() and "linux" .. (jit.arch == "x86" and "" or "64")) or (system.IsWindows() and "win" .. (jit.arch == "x86" and "32" or "64")) or "UNSUPPORTED") .. ".dll")
 ```
 
-2. Put the downloaded `dll` file in `garrysmod/lua/bin`, if that folder doesn't exist, create it
+Then, put the downloaded `dll` file in `garrysmod/lua/bin`, if that folder doesn't exist, create it.
 
-3. Download the [MaxMindDB GeoIP database](https://www.maxmind.com/en/geoip2-services-and-databases) and copy it to `garrysmod/maxminddb.mmdb` on your server
+## Downloading the MaxMindDB GeoIP database
+
+[Click here to download the MaxMindDB GeoIP database](https://www.maxmind.com/en/geoip2-services-and-databases)
 
 You'll need to create an account unfortunately. Alternatively, you could always [download a sketchy one from GitHub](https://github.com/search?l=&q=extension%3Ammdb&type=code) if you are lazy.
 
 One you've created an account, log in and go to "Download Files" or "Download Databases" and download the database you need.
 
+Once downloaded, copy it to `garrysmod/maxminddb.mmdb` on your server.
+
 ### Which MaxMindDB GeoIP database do I need?
 
 If you only need country information, download "GeoLite2 Country" (NOT the CSV one)
+
+<br>
 
 # Developers
 
@@ -30,21 +38,24 @@ All data available in the [`maxminddb` crate documentation](https://docs.rs/maxm
 
 If you want to automate the downloading of the database in some way, the module will also accept a MaxMindDB stored in `garrysmod/data/maxminddb.dat` which can be written to using [`file.Write`](https://wiki.facepunch.com/gmod/file.Write)
 
-### Rust -> Lua Type Conversions
+<br>
+
+## Rust -> Lua Type Conversions
 
 Not all servers will have the full databases installed, and the free database contains limited data, which most servers will install. Therefore, do note that every field can be `nil`.
 
-|        Rust       |           Lua           | English                                                               |
-|:-----------------:|:-----------------------:|-----------------------------------------------------------------------|
-| `BTreeMap<K, V>`  | `{ [K] = V, ... }`      | A key-value table                                                     |
-| `Vec<T>`          | `{ T, ... }`            | A sequential table                                                    |
-| `Option<T>`       | `T \| nil`              | Something that can be `nil`                                           |
-| `&str`            | `string`                | Text                                                                  |
-| `f64`             | `number`                | A double-precision floating point number (a number with decimals)     |
-| `u32` `u16`       | `integer`               | A positive integer                                                    |
-| _everything else_ | `{ [string] = T, ... }` | All other types (structs) will be serialized as key-valued Lua tables |
+|        Rust       |           Lua           | English                     |
+|:-----------------:|:-----------------------:|-----------------------------|
+| `BTreeMap<K, V>`  | `{ [K] = V, ... }`      | A key-value table           |
+| `Vec<T>`          | `{ T, ... }`            | A sequential table          |
+| `Option<T>`       | `T \| nil`              | Something that can be `nil` |
+| `&str`            | `string`                | Text                        |
+| `f64`             | `number`                | A decimal number            |
+| `u32` `u16`       | `integer`               | A positive integer          |
 
-### Loading the module
+<br>
+
+## Loading the module
 
 ```lua
 require("maxminddb_geoip")
@@ -58,7 +69,9 @@ print(maxminddb.VERSION)
 maxminddb.refresh()
 ```
 
-### Simple Querying
+<br>
+
+## Simple Querying
 
 ```lua
 -- Provided for convenience
@@ -71,7 +84,9 @@ else
 end
 ```
 
-### Advanced Querying
+<br>
+
+## Advanced Querying
 
 ```lua
 -- Advanced querying
