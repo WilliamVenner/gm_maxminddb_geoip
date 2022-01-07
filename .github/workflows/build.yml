@@ -30,12 +30,12 @@ jobs:
       run: cargo build --release --target x86_64-unknown-linux-gnu
     - name: Strip debug symbols
       run: |
-        strip target/i686-unknown-linux-gnu/release/libgmsv_maxminddb_geoip.so
-        strip target/x86_64-unknown-linux-gnu/release/libgmsv_maxminddb_geoip.so
+        strip target/i686-unknown-linux-gnu/release/libgm_maxminddb_geoip.so
+        strip target/x86_64-unknown-linux-gnu/release/libgm_maxminddb_geoip.so
     - name: Rename binaries
       run: |
-        mv target/i686-unknown-linux-gnu/release/libgmsv_maxminddb_geoip.so target/i686-unknown-linux-gnu/release/gmsv_maxminddb_geoip_linux.dll
-        mv target/x86_64-unknown-linux-gnu/release/libgmsv_maxminddb_geoip.so target/x86_64-unknown-linux-gnu/release/gmsv_maxminddb_geoip_linux64.dll
+        mv target/i686-unknown-linux-gnu/release/libgm_maxminddb_geoip.so target/i686-unknown-linux-gnu/release/gmsv_maxminddb_geoip_linux.dll
+        mv target/x86_64-unknown-linux-gnu/release/libgm_maxminddb_geoip.so target/x86_64-unknown-linux-gnu/release/gmsv_maxminddb_geoip_linux64.dll
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
@@ -63,8 +63,8 @@ jobs:
         RUSTFLAGS: -Ctarget-feature=+crt-static
     - name: Rename binaries
       run: |
-        mv target/i686-pc-windows-msvc/release/gmsv_maxminddb_geoip.dll target/i686-pc-windows-msvc/release/gmsv_maxminddb_geoip_win32.dll
-        mv target/x86_64-pc-windows-msvc/release/gmsv_maxminddb_geoip.dll target/x86_64-pc-windows-msvc/release/gmsv_maxminddb_geoip_win64.dll
+        mv target/i686-pc-windows-msvc/release/gm_maxminddb_geoip.dll target/i686-pc-windows-msvc/release/gmsv_maxminddb_geoip_win32.dll
+        mv target/x86_64-pc-windows-msvc/release/gm_maxminddb_geoip.dll target/x86_64-pc-windows-msvc/release/gmsv_maxminddb_geoip_win64.dll
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
