@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gm_maxmind_geoip"
+name = "gm_maxminddb_geoip"
 version = "1.0.0"
 dependencies = [
  "gmod",

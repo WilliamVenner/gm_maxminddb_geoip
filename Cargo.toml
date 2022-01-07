@@ -1,5 +1,5 @@
 [package]
-name = "gm_maxmind_geoip"
+name = "gm_maxminddb_geoip"
 authors = ["William Venner <william@venner.io>"]
 version = "1.0.0"
 edition = "2021"
